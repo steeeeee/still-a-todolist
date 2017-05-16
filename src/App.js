@@ -9,7 +9,7 @@ class App extends Component {
 
     this.state = {
       todos: [],
-      completedTodos: 0
+      newTodo: false
     };
 
     this.addTodo = this.addTodo.bind(this);
@@ -22,8 +22,10 @@ class App extends Component {
   addTodo(todo) {
     // Concat creates a new array
     // never push into the same array
+
     this.setState({
-      todos: this.state.todos.concat(todo)
+      todos: [todo].concat(this.state.todos),
+      newTodo: true
     });
   }
 
@@ -31,7 +33,10 @@ class App extends Component {
     const todos = this.state.todos;
     todos.splice(todoPos, 1);
 
-    this.setState({ todos });
+    this.setState({
+      todos,
+      newTodo: false
+    });
   }
 
   destroyCompleted() {
@@ -58,12 +63,18 @@ class App extends Component {
     });
   }
 
-  updateTodo(todoPos, todoText) {
+  updateTodo(todoPos, todoText, isNew) {
     const todos = this.state.todos;
-    todos[todoPos].desc = todoText;
+
+    todos[todoPos] = {
+      ...todos[todoPos],
+      desc: todoText,
+      isNew: false
+    }
 
     this.setState({
-      todos
+      todos,
+      newTodo: false
     });
   }
 
@@ -73,21 +84,23 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Test TodoApp</h2>
-          <h3>Active Todos: {activeTodoCount}</h3>
-          <h3>Completed Todos: {completedTodoCount}</h3>
-        </div>
-        <button onClick={() => this.toggleAll(activeTodoCount === 0)}>Toggle All</button>
-        <button onClick={this.destroyCompleted}>Destroy Completed</button>
+        <div className="App__queue__2" />
+        <div className="App__queue__1" />
         <div className="App__todos">
-          <TodoInput addTodo={this.addTodo} />
+          <TodoInput addTodo={this.addTodo} newTodo={this.state.newTodo} />
           <TodoList
             todos={this.state.todos}
             updateTodo={this.updateTodo}
             deleteTodo={this.deleteTodo}
             toggleCompleted={this.toggleCompleted}
           />
+        </div>
+        <button onClick={() => this.toggleAll(activeTodoCount === 0)}>Toggle All</button>
+        <button onClick={this.destroyCompleted}>Destroy Completed</button>
+        <div className="App-header">
+          <h2>Test TodoApp</h2>
+          <h3>Active Todos: {activeTodoCount}</h3>
+          <h3>Completed Todos: {completedTodoCount}</h3>
         </div>
       </div>
     );
