@@ -5,9 +5,8 @@ class TodoElement extends Component {
     super(props);
 
     this.state = {
-      value: this.props.todo.desc,
+      value: '',
       editing: false,
-      isNew: this.props.todo.isNew
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,7 +15,7 @@ class TodoElement extends Component {
   }
 
   componentDidMount() {
-    if (this.state.isNew) {
+    if (this.props.todo.isNew) {
       this.todoInput.focus();
     }
   }
@@ -29,7 +28,10 @@ class TodoElement extends Component {
 
   toggleEdit() {
     console.log('quiiii')
-    this.setState({editing: !this.state.editing}, () => {
+    this.setState({
+      editing: !this.state.editing,
+      value: this.props.desc
+    }, () => {
       this.todoInput.focus();
     });
   }
@@ -37,10 +39,9 @@ class TodoElement extends Component {
   handleSubmit(e, id, isNew) {
     e.preventDefault();
     if (this.state.value !== '') {
-      this.props.updateTodo(id, this.state.value, this.state.isNew);
+      this.props.updateTodo(id, this.state.value);
       this.setState({
-        editing: false,
-        isNew: false
+        editing: false
       });
     } else {
       this.props.deleteTodo(id);
@@ -76,7 +77,7 @@ class TodoElement extends Component {
                {desc}
               </p>
             </div>
-            <div className="todo__element--delete iconicfill-trash-fill" onClick={() => this.props.deleteTodo(id)} />
+            <div className="todo__element--delete entypo-cancel-squared" onClick={() => this.props.deleteTodo(id)} />
         </li>
       </div>
     );

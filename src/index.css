@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,500,600,700');
-@import url('http://weloveiconfonts.com/api/?family=iconicfill');
+@import url('http://weloveiconfonts.com/api/?family=iconicstroke|iconicfill');
+@import url('http://weloveiconfonts.com/api/?family=entypo');
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+/* iconicstroke */
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+}
 
 html, body {
   box-sizing: border-box;
