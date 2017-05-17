@@ -245,7 +245,7 @@ ul {
   height: 100%;
   background-color: #fff;
   border: 2px solid #00BCD4;
-  border-radius: 30px;
+  border-radius: 7px;
   transition: all .5s ease;
 }
 .todo__element--checkbox:hover:before {
@@ -380,7 +380,7 @@ ul {
     display: flex;
     justify-content: space-around;
     align-items: stretch;
-    height: 60px;
+    height: 75px;
     background-color: #efefef;
     transition: all .5s ease;
 }

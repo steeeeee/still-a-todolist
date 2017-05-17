@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+// import { TransitionMotion, spring } from 'react-motion';
 
 class TodoElement extends Component {
   constructor(props) {
@@ -53,6 +55,7 @@ class TodoElement extends Component {
     const id =  this.props.id;
 
     return (
+
       <div id={id} className={`${isNew && 'inserting'} todo__element`}>
         <li className={"todo__element--container"}>
             <div

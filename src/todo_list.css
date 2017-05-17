@@ -1,0 +1,16 @@
+.todo-appear {
+  height: 0;
+}
+.todo-appear.todo-appear-active {
+  transition: all .3s ease;
+  height: 75px;
+  margin: 15px -20px;
+}
+.todo-leave {
+  transition: all .3s ease;
+  height: 75px;
+  margin: 15px -20px;
+}
+.todo-leave.todo-leave-active {
+  height: 0;
+}
