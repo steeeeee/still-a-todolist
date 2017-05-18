@@ -53,10 +53,19 @@ class TodoElement extends Component {
   render() {
     const { desc, completed, isNew } = this.props.todo
     const id =  this.props.id;
+    const { height, opacity, marginX, marginY, shadowOffY, shadowBlur, shadowSpread, borderTop, zIndex } = this.props.styles
+
+    const style = {
+      height: height,
+      opacity: opacity,
+      margin: `${marginY}px ${marginX}px`,
+      boxShadow: `0px ${shadowOffY}px ${shadowBlur}px ${shadowSpread}px rgba(51,24,75,0.41)`,
+      borderTop: `${borderTop}px solid #efefef`,
+      zIndex
+    }
 
     return (
-
-      <div id={id} className={`${isNew && 'inserting'} todo__element`}>
+      <div id={id} className={`${isNew && 'inserting'} todo__element`} style={style}>
         <li className={"todo__element--container"}>
             <div
               onClick={() => this.props.toggleCompleted(id)}

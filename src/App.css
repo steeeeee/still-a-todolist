@@ -135,10 +135,12 @@
   height: 75px;
   border-radius: 3px;
   transition: all .5s ease;
+  z-index: 60;
 }
 
 .todo__input.inserting {
   height: 0;
+  z-index: 0;
 }
 
 .todo__input--wrap {
@@ -188,15 +190,14 @@ ul {
   position: relative;
   display: flex;
   background: #fff;
-  transition: all .3s ease;
-  border-top: 1px solid #efefef;
+  /*transition: z-index .3s ease;*/
+  /*border-top: 1px solid #efefef;*/
 }
 
 .todo__element.inserting {
-    margin: 15px -20px;
-    z-index: 3;
-    box-shadow: 0px 22px 59px -1px rgba(51,24,75,0.41);
-    border-top: 0;
+    /*z-index: 100;*/
+    /*box-shadow: 0px 22px 59px -1px rgba(51,24,75,0.41);*/
+    /*border-top: 0;*/
     border-radius: 3px;
     padding: 0px;
 }
@@ -213,7 +214,7 @@ ul {
   align-items: center;
   flex-grow: 1;
   padding: 15px;
-  height: 45px;
+  /*height: 45px;*/
 }
 
 .todo__element.inserting .todo__element--delete {
@@ -383,6 +384,7 @@ ul {
     height: 75px;
     background-color: #efefef;
     transition: all .5s ease;
+    z-index: 50;
 }
 
 .todo__filters.hidden {
